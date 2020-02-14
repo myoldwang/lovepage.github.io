@@ -57,6 +57,25 @@
   .title {
     text-align: center;
   }
+  .music {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-size: cover;
+    background-image: url('images/music.jpg');
+    animation: rotate 3s linear infinite
+  }
+  @keyframes rotate{from{transform: rotate(0deg)}
+    to{transform: rotate(360deg)}
+  }
+  .pause {
+    animation-play-state:paused;
+  }
 	/*start text*/
 	#text{width:80%; height:200px;color:#fff;margin: 100px auto 0;font-size:60px;font-family:"方正喵呜体";}
 	/*end text*/
@@ -67,6 +86,7 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 
 </head>
 <body>
+  <div class="music pause"></div>
 <!--start top-->
 <audio style="display: none;" id="audio" preload="load" loop="loop" controls autoplay src="./summertime.mp3">
 </audio>
@@ -110,14 +130,25 @@
 			flakeColor:"#ffffff"
 		});
   });
-  
-  document.addEventListener('touchstart', () => {
-    document.getElementById('audio').play()
-  })
 
-  $("html").on("touchstart",function(){
-    document.getElementById('audio').play()
-  })          
+  $('.music').on('click', () => {
+    var audio = document.getElementById('audio')
+    if (audio.paused) {
+      audio.play()
+      $('.music').removeClass('pause')
+    } else {
+      audio.pause()
+      $('.music').addClass('pause')
+    }
+  })
+  
+  // document.addEventListener('touchstart', () => {
+  //   document.getElementById('audio').play()
+  // })
+
+  // $("html").on("touchstart",function(){
+  //   document.getElementById('audio').play()
+  // })          
 	
 	var i=0;
 	var str="能够遇见你是我最大的幸运，有了你生活变得丰富多彩，有了你，世界变得如此迷人；你是我的世界，我的世界是你，对我来说，不是在最美好的时光遇见了你，而是遇见你后都是最美好的时光！";
