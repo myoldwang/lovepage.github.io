@@ -114,6 +114,10 @@
   document.addEventListener('touchstart', () => {
     document.getElementById('audio').play()
   })
+
+  $("html").on("touchstart",function(){
+    document.getElementById('audio').play()
+  })          
 	
 	var i=0;
 	var str="能够遇见你是我最大的幸运，有了你生活变得丰富多彩，有了你，世界变得如此迷人；你是我的世界，我的世界是你，对我来说，不是在最美好的时光遇见了你，而是遇见你后都是最美好的时光！";
