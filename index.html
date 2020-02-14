@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>i love you</title>
+<title>🐶 🐷 の第一个情人节</title>
 <style type="text/css">
 	*{margin:0;padding:0;}
 	body{background:url("images/1.jpg");background-size:contain;}
@@ -61,12 +61,15 @@
 	#text{width:80%; height:200px;color:#fff;margin: 100px auto 0;font-size:60px;font-family:"方正喵呜体";}
 	/*end text*/
 </style>
-<meta name="description" content="Linux公社(www.linuxidc.com)是专业的Linux系统门户网站，实时发布最新Linux资讯，包括Linux、Ubuntu、Fedora、RedHat、红旗Linux、Linux教程、Linux认证、SUSE Linux、Android、Oracle、Hadoop等技术。"/>
-<meta name="keywords" content="Linux,Ubuntu,Fedora,RedHat,红旗Linux,Linux教程,Linux系统,Linux安装,SUSE Linux,Android,Oracle"/>
-<link rel="canonical" href="http://www.linuxidc.com/"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<link rel="canonical" href=""/>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 
 </head>
 <body>
 <!--start top-->
+<audio style="display: none;" id="audio" preload="load" loop="loop" controls autoplay src="./summertime.mp3">
+</audio>
 <div class="top">
   <marquee behavior="alternate">时光不老，我们不散</marquee>
   <div class="title">傻猪猪 情人节快乐!</div>
@@ -106,12 +109,28 @@
 			newOn:1000,
 			flakeColor:"#ffffff"
 		});
-	});
+  });
+  
+  document.addEventListener('touchstart', () => {
+    document.getElementById('audio').play()
+  })
 	
 	var i=0;
 	var str="能够遇见你是我最大的幸运，有了你生活变得丰富多彩，有了你，世界变得如此迷人；你是我的世界，我的世界是你，对我来说，不是在最美好的时光遇见了你，而是遇见你后都是最美好的时光！";
-	
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    function audioAutoPlay() {
+        var audio = document.getElementById('audio');
+            audio.play();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            audio.play();
+        }, false);
+    }
+    audioAutoPlay();
+});
+
 	window.onload=function typing(){
+    var audio = document.getElementById('audio')
 		//获取div
 		var mydiv=document.getElementById("text");
 		mydiv.innerHTML+=str.charAt(i);
