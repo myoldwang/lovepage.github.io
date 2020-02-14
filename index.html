@@ -1,0 +1,127 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery情人节表白特效 - Linux公社www.linuxidc.com</title>
+<style type="text/css">
+	*{margin:0;padding:0;}
+	body{background:url("images/1.jpg");background-size:contain;}
+	/*start top*/
+	.top{width:100%;margin:40px auto;font-size:60px;font-family:"华文行楷";color:#fff;
+	<!--background:-webkit-linear-gradient(45deg,#ff0000,#ffcc00,#ffff99,#33ccff,#00ff33,#6600ff,#333399);
+	-webkit-background-clip:text;-->}
+	/*end top*/
+	/*start box*/
+	.box{width:310px;height:310px;margin: 150px auto;perspective:800px;/*景深*/}
+	.box .pic{position:relative;transform-style:preserve-3d;/*3d环境*/ animation:play 10s linear infinite;/*动画名称 执行时间 匀速 无限执行*/}
+	.box ul li{list-style:none;position:absolute;top:0;left:0;}
+	/*start box*/
+	/*定义一个关键帧*/
+	@keyframes play{
+		from{transform:rotateY(0deg);}
+		to{transform:rotateY(360deg);}
+	}
+  .img {
+    border-radius: 100%;
+    overflow: hidden;
+  }
+  .img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .img:nth-child(1) {
+    background-image: url('images/1.jpeg');
+  }
+  .img:nth-child(2) {
+    background-image: url('images/9.jpeg');
+  }
+  .img:nth-child(3) {
+    background-image: url('images/4.jpeg');
+  }
+  .img:nth-child(4) {
+    background-image: url('images/5.jpeg');
+    background-position-y: center;
+  }
+  .img:nth-child(5) {
+    background-image: url('images/6.jpeg');
+    background-position-y: center;
+  }
+  .img:nth-child(6) {
+    background-image: url('images/10.jpeg');
+    background-position-y: center;
+  }
+  .title {
+    text-align: center;
+  }
+	/*start text*/
+	#text{width:80%; height:200px;color:#fff;margin: 100px auto 0;font-size:60px;font-family:"方正喵呜体";}
+	/*end text*/
+</style>
+<meta name="description" content="Linux公社(www.linuxidc.com)是专业的Linux系统门户网站，实时发布最新Linux资讯，包括Linux、Ubuntu、Fedora、RedHat、红旗Linux、Linux教程、Linux认证、SUSE Linux、Android、Oracle、Hadoop等技术。"/>
+<meta name="keywords" content="Linux,Ubuntu,Fedora,RedHat,红旗Linux,Linux教程,Linux系统,Linux安装,SUSE Linux,Android,Oracle"/>
+<link rel="canonical" href="http://www.linuxidc.com/"/>
+</head>
+<body>
+<!--start top-->
+<div class="top">
+  <marquee behavior="alternate">时光不老，我们不散</marquee>
+  <div class="title">傻猪猪 情人节快乐!</div>
+</div>
+<!--end top-->
+<!--start box-->
+<div class="box">
+	<div class="pic">
+		<ul>
+      <li class="img"></li>
+      <li class="img"></li>
+      <li class="img"></li>
+      <li class="img"></li>
+      <li class="img"></li>
+      <li class="img"></li>
+		</ul>
+	</div>
+</div>
+<!--end box-->x
+<!--start text-->
+<div id="text"></div>
+<!--end text-->
+<embed src="music.mp3" hidden="true">
+
+<script src="js/jquery.min.js"></script>
+<!--雪花-->
+<script src="js/snow.js"></script>
+<script>
+	$(".pic ul li").each(function(i){//遍历
+		var deg=360/$(".pic ul li").size();//size个数
+		//当前的li对象 添加css样式
+		$(this).css({"transform":"rotateY("+deg*i+"deg) translateZ(350px)"});
+		
+		$.fn.snow({
+			minSize:10,
+			maxSize:15,
+			newOn:1000,
+			flakeColor:"#ffffff"
+		});
+	});
+	
+	var i=0;
+	var str="能够遇见你是我最大的幸运，有了你生活变得丰富多彩，有了你，世界变得如此迷人；你是我的世界，我的世界是你，对我来说，不是在最美好的时光遇见了你，而是遇见你后都是最美好的时光！";
+	
+	window.onload=function typing(){
+		//获取div
+		var mydiv=document.getElementById("text");
+		mydiv.innerHTML+=str.charAt(i);
+		i++;
+		var id=setTimeout(typing,100);
+		if(i==str.length){
+			clearTimeout(id);
+		}
+	}
+</script>
+
+</body>
+</html>
